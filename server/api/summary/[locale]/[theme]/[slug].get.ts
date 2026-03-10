@@ -75,24 +75,12 @@ export default defineEventHandler(async (event) => {
 
         #summary div[endpoint] {
             display: flex;
-            padding: 16px;
-            border: 1px solid ${vars.borderColor};
             opacity: 50%;
         }
     `
 
     return useSatori(event, /*html*/`<style>${style}</style>
-        <div style="${tw`flex flex-col w-full h-full border relative`}">
-            <div style="${tw`flex w-full h-24 border-b overflow-hidden`}">
-                <svg viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="tile-lines-in-motion" patternUnits="userSpaceOnUse" width="120" height="120">
-                            <path d="M9 0h2v20H9V0zm25.134.84l1.732 1-10 17.32-1.732-1 10-17.32zm-20 20l1.732 1-10 17.32-1.732-1 10-17.32zM58.16 4.134l1 1.732-17.32 10-1-1.732 17.32-10zm-40 40l1 1.732-17.32 10-1-1.732 17.32-10zM80 9v2H60V9h20zM20 69v2H0v-2h20zm79.32-55l-1 1.732-17.32-10L82 4l17.32 10zm-80 80l-1 1.732-17.32-10L2 84l17.32 10zm96.546-75.84l-1.732 1-10-17.32 1.732-1 10 17.32zm-100 100l-1.732 1-10-17.32 1.732-1 10 17.32zM38.16 24.134l1 1.732-17.32 10-1-1.732 17.32-10zM60 29v2H40v-2h20zm19.32 5l-1 1.732-17.32-10L62 24l17.32 10zm16.546 4.16l-1.732 1-10-17.32 1.732-1 10 17.32zM111 40h-2V20h2v20zm3.134.84l1.732 1-10 17.32-1.732-1 10-17.32zM40 49v2H20v-2h20zm19.32 5l-1 1.732-17.32-10L42 44l17.32 10zm16.546 4.16l-1.732 1-10-17.32 1.732-1 10 17.32zM91 60h-2V40h2v20zm3.134.84l1.732 1-10 17.32-1.732-1 10-17.32zm24.026 3.294l1 1.732-17.32 10-1-1.732 17.32-10zM39.32 74l-1 1.732-17.32-10L22 64l17.32 10zm16.546 4.16l-1.732 1-10-17.32 1.732-1 10 17.32zM71 80h-2V60h2v20zm3.134.84l1.732 1-10 17.32-1.732-1 10-17.32zm24.026 3.294l1 1.732-17.32 10-1-1.732 17.32-10zM120 89v2h-20v-2h20zm-84.134 9.16l-1.732 1-10-17.32 1.732-1 10 17.32zM51 100h-2V80h2v20zm3.134.84l1.732 1-10 17.32-1.732-1 10-17.32zm24.026 3.294l1 1.732-17.32 10-1-1.732 17.32-10zM100 109v2H80v-2h20zm19.32 5l-1 1.732-17.32-10 1-1.732 17.32 10zM31 120h-2v-20h2v20z" fill="${vars.accent}" fill-opacity="1" fill-rule="evenodd"/>
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#tile-lines-in-motion)" />
-                </svg>
-            </div>
+        <div style="${tw`flex flex-col w-full h-full relative`}">
             <div style="${tw`flex gap-8 p-8 w-full items-start justify-between`}">
                 <div id="summary" style="${tw`gap-2 flex flex-col grow max-w-[60%]`}">
                     ${md.render(data.summary.content).replaceAll('response-block', 'div')}
@@ -106,7 +94,7 @@ export default defineEventHandler(async (event) => {
                                 ${items.map(item => { 
                                     const color = item.color.match(/var\(--color-([a-z0-9-]+)\)/)?.[1]
                                     return /*html*/`
-                                        <span style="${tw`font-bold flex items-center text-xs px-2 py-1 gap-1 !bg-${color}/50 border !border-${color}`}">
+                                        <span style="${tw`font-bold flex items-center text-xs px-2 py-1 gap-1 rounded-lg !bg-${color}/50 border !border-${color}`}">
                                             ${item.name}
                                         </span>
                                     `.trim()
@@ -117,7 +105,7 @@ export default defineEventHandler(async (event) => {
                 </div>
                 <img src="${data.summary.image}" style="${tw`w-[30%]`}">
             </div>
-            <div style="${tw`font-bold flex items-center text-nowrap px-3 py-2 text-base gap-2 text-[${vars.color}] bg-[${vars.accent}] w-fit absolute bottom-8 right-8`}">
+            <div style="${tw`font-bold flex items-center text-nowrap px-3 py-2 text-base gap-2 rounded-lg text-[${vars.color}] bg-[${vars.accent}] w-fit absolute bottom-8 right-8`}">
                 ${locales[locale as keyof typeof locales].labels.contact_me}
             </div>
         </div>

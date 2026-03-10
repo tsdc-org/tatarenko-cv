@@ -13,8 +13,8 @@ export const useSatori = async (event: H3Event, string: string) => {
     if (!['png', 'svg'].includes(format)) throw createError({ status: 404 })
 
     const fonts = [
-        await useSatoriFont('Cascadia Code', 400),
-        await useSatoriFont('Cascadia Code', 700)
+        await useSatoriFont('Nunito', 400),
+        await useSatoriFont('Nunito', 700)
     ]
     const svg = await satori(html(`${string.trim()}`.replace(/<\/?strong>/g, '')) as any, { width: 1200, fonts })
     if (format == 'svg') {
