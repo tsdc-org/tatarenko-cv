@@ -77,6 +77,10 @@ export default defineEventHandler(async (event) => {
             display: flex;
             opacity: 50%;
         }
+
+        h1 {
+            color: ${vars.accent}
+        }
     `
 
     return useSatori(event, /*html*/`<style>${style}</style>
@@ -94,7 +98,7 @@ export default defineEventHandler(async (event) => {
                                 ${items.map(item => { 
                                     const color = item.color.match(/var\(--color-([a-z0-9-]+)\)/)?.[1]
                                     return /*html*/`
-                                        <span style="${tw`font-bold flex items-center text-xs px-2 py-1 gap-1 rounded-lg !bg-${color}/50 border !border-${color}`}">
+                                        <span style="${tw`font-bold flex items-center text-xs px-2 py-1 gap-1 rounded-md !bg-${color}/50 border !border-${color}`}">
                                             ${item.name}
                                         </span>
                                     `.trim()
@@ -103,7 +107,7 @@ export default defineEventHandler(async (event) => {
                         `).join('\n')}
                     </div>
                 </div>
-                <img src="${data.summary.image}" style="${tw`w-[30%]`}">
+                <img src="${data.summary.image}" style="${tw`w-[30%] rounded-lg`}">
             </div>
             <div style="${tw`font-bold flex items-center text-nowrap px-3 py-2 text-base gap-2 rounded-lg text-[${vars.color}] bg-[${vars.accent}] w-fit absolute bottom-8 right-8`}">
                 ${locales[locale as keyof typeof locales].labels.contact_me}
