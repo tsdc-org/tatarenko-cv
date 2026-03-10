@@ -213,7 +213,7 @@
         </template>
         <template #right>
             <div class="flex flex-col items-end h-full gap-2 max-lg:items-center">
-                <NuxtLink to="/" v-html="LogoMini"/>
+                <NuxtLink to="https://xlsft.ru" target="_blank" v-html="LogoMini" class="hover:opacity-50 transition-all"/>
                 <span class="text-[10px]! text-default/50">{{ config.head.author }} @ {{ new Date().getFullYear() }}</span>
             </div>
         </template>
