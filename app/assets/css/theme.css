@@ -1,60 +1,10 @@
 :root {
-    --ui-text: var(--color-black);
-    --ui-text-inverted: var(--color-white);
-
-    --ui-bg: var(--color-white);
-    --ui-bg-inverted: var(--color-black);
-
-    --ui-neutral: #c2c2c2;
-}
-
-.dark {
-    --ui-text: var(--color-white);
-    --ui-text-inverted: var(--color-black);
-
-    --ui-bg: var(--color-black);
-    --ui-bg-inverted: var(--color-white);
-
-    --ui-neutral: #404040;
-}
-
-:root, .dark {
-    --ui-radius: 0px;
-    --ui-container: 1200px;
+    --ui-radius: 4px;
+    --ui-container: 1400px;
     --ui-header-height: 54px;
     --ui-bottom-bar-height: 54px;
-
     --ui-viewport-height: calc(100dvh - var(--ui-header-height));
     --ui-container-height: calc(100dvh - var(--ui-header-height) - calc(var(--spacing) * 24));
-
-    --ui-primary: var(--color-blue-500);
-    --ui-secondary: var(--color-blue-300);
-
-    --ui-success: var(--color-emerald-500);
-    --ui-info: var(--color-cyan-500);
-    --ui-warning: var(--color-orange-500);
-    --ui-error: var(--color-rose-500);
-    
-
-    --ui-border: var(--ui-neutral);
-    --ui-border-accented: var(--ui-neutral);
-    --ui-border-muted: var(--ui-neutral);
-    --ui-text-dimmed: var(--ui-neutral);
-
-    --ui-bg-muted: var(--ui-bg);
-    --ui-bg-elevated: var(--ui-bg);
-    --ui-bg-accented: var(--ui-bg);
-
-    --ui-text-muted: var(--ui-text-dimmed);
-    --ui-text-toned: var(--ui-text-dimmed);
-    --ui-text-highlighted: var(--ui-text);
-}
-
-* {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-} *::-webkit-scrollbar {
-    display: none;
 }
 
 body {
@@ -63,19 +13,73 @@ body {
 
 * {
     border-color: var(--ui-border);
-    outline-color: var(--ui-border);
-    cursor: crosshair;
 }
 
+:root {
+    --ui-primary: var(--color-emerald-600);
+    --ui-secondary: var(--color-emerald-800);
+    --ui-success: var(--color-emerald-600);
+    --ui-info: var(--color-cyan-600);
+    --ui-warning: var(--color-orange-600);
+    --ui-error: var(--color-rose-600);
+    --ui-neutral: var(--color-stone-700)
+
+    --ui-text-dimmed: var(--color-stone-400);
+    --ui-text-muted: var(--color-stone-500);
+    --ui-text-toned: var(--color-stone-600);
+    --ui-text: var(--color-stone-700);
+    --ui-text-highlighted: var(--color-stone-900);
+    --ui-text-inverted: var(--color-white);
+
+    --ui-bg: var(--color-white);
+    --ui-bg-muted: var(--color-stone-50);
+    --ui-bg-elevated: var(--color-stone-100);
+    --ui-bg-accented: var(--color-stone-200);
+    --ui-bg-inverted: var(--color-stone-900);
+    --ui-border: var(--color-stone-200);
+    --ui-border-accented: var(--color-stone-300);
+    --ui-border-muted: var(--color-stone-200);
+
+}
+
+.dark {
+    --ui-primary: var(--color-emerald-400);
+    --ui-secondary: var(--color-emerald-800);
+    --ui-success: var(--color-emerald-400);
+    --ui-info: var(--color-cyan-400);
+    --ui-warning: var(--color-orange-400);
+    --ui-error: var(--color-rose-400);
+    --ui-neutral: var(--color-stone-900);
+
+    --ui-text-dimmed: var(--color-stone-500);
+    --ui-text-muted: var(--color-stone-400);
+    --ui-text-toned: var(--color-stone-300);
+    --ui-text: var(--color-stone-200);
+    --ui-text-highlighted: var(--color-white);
+    --ui-text-inverted: var(--color-stone-900);
+
+    --ui-bg: var(--color-stone-900);
+    --ui-bg-muted: var(--color-stone-800);
+    --ui-bg-elevated: var(--color-stone-800);
+    --ui-bg-accented: var(--color-stone-700);
+    --ui-bg-inverted: var(--color-white);
+    --ui-border: var(--color-stone-800);
+    --ui-border-accented: var(--color-stone-700);
+    --ui-border-muted: var(--color-stone-800);
+}
+
+
 * ::selection {
-    color: var(--color-white) !important;
+    color: var(--ui-text-inverted) !important;
+    background-color: var(--ui-primary) !important;
+}
+::selection {
+    color: var(--ui-text-inverted) !important;
     background-color: var(--ui-primary) !important;
 }
 
-a {
-    @apply text-sm! text-default/50! underline hover:opacity-50 transition-opacity cursor-nw-resize! *:cursor-nw-resize! text-nowrap *:pointer-events-none
-}
-
-button {
-    @apply cursor-nw-resize! *:cursor-nw-resize! hover:opacity-75 transition-opacity
+body {
+    --ui-bottom-bar-bottom: 0px;
+}; body:has([role="dialog"]) {
+    --ui-bottom-bar-bottom: calc(0px - var(--ui-bottom-bar-height));
 }

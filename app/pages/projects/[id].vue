@@ -41,14 +41,9 @@
         title: data.value?.name,
         ogTitle: `${data.value?.seo.title} — ${data.value?.name}`,
         description: useMarkdownRemoval(data.value?.description),
-        ogDescription: useMarkdownRemoval(data.value?.description)
+        ogDescription: useMarkdownRemoval(data.value?.description),
+        ogImage: data.value.thumbnail
     })
-
-    defineOgImage('AtomsOgProject.takumi', {
-        theme: theme.value as 'dark' | 'light',
-        project: data.value,
-    })
-
 </script>
 
 <template>
@@ -58,14 +53,14 @@
         loop autoplay arrows
         :prev="{ variant: 'outline' }" :next="{ variant: 'outline' }"        
         :ui="{
-            item: 'ps-0! basis-1/2 max-lg:basis-full relative overflow-hidden',
-            prev: 'sm:start-8 rounded-none! hover:opacity-75! disabled:opacity-0! disabled:pointer-events-none!',
-            next: 'sm:end-8 rounded-none! hover:opacity-75! disabled:opacity-0! disabled:pointer-events-none!',
+            item: 'basis-1/2 max-lg:basis-full relative overflow-hidden overflow-hidden',
+            prev: 'sm:start-8 rounded-lg! hover:opacity-75! disabled:opacity-0! disabled:pointer-events-none!',
+            next: 'sm:end-8 rounded-lg! hover:opacity-75! disabled:opacity-0! disabled:pointer-events-none!',
             container: 'ms-0 max-h-100',
-            root: 'border-b'
+            root: 'rounded-lg! overflow-hidden'
         }"
     >
-        <AtomsPreview class="relative" :style="{ background: data?.bg }">
+        <AtomsPreview class="relative rounded-lg!" :style="{ background: data?.bg }">
             <NuxtImg 
                 :src="(src as string)"
                 :alt="data?.name + ` image ${index}`" 
@@ -89,10 +84,10 @@
     <MoleculesSectionHeader pattern="graph-paper">
         <div>{{ t('sections.about_project') }}</div>
     </MoleculesSectionHeader>
-    <section class="p-8 max-lg:p-4 flex max-lg:flex-col-reverse gap-8 max-lg:gap-4">
+    <section class="flex max-lg:flex-col-reverse gap-8 max-lg:gap-4">
 
         <div class="flex flex-col gap-4 grow">
-            <NuxtImg :src="data?.thumbnail" :alt="data?.description" v-if="data?.thumbnail" class="w-full border"/>
+            <NuxtImg :src="data?.thumbnail" :alt="data?.description" v-if="data?.thumbnail" class="w-full rounded-lg"/>
             <div class="flex items-center gap-4">
                 <h1>{{ data?.name }}</h1>
                 <div class="flex items-center gap-1 *:text-yellow-500" v-if="repo?.stars">
@@ -143,7 +138,7 @@
             <div>{{ t('sections.related_projects') }}</div>
         </MoleculesSectionHeader>
         <section class="flex flex-col relative">
-            <NuxtBlogPosts class="p-8 max-lg:p-4" :ui="{ base: 'gap-4! p-8!' }">
+            <NuxtBlogPosts :ui="{ base: 'gap-4! p-8!' }">
                 <NuxtBlogPost
                     v-for="project in (data.related || []).sort((a: any, b: any) => b.priority - a.priority)"
                     :key="project.name"
@@ -153,7 +148,7 @@
                     :ui="{
                         header: 'border-b group-hover/blog-post:border-primary!', 
                         image: 'grayscale group-hover/blog-post:grayscale-0 group-hover/blog-post:scale-105! transition-all',
-                        root: 'hover:ring-primary! *:cursor-nw-resize! cursor-nw-resize!',
+                        root: 'hover:ring-primary!',
                         body: 'p-3! flex flex-col gap-1',
                         description: 'm-0! flex flex-col gap-4 grow',
                         title: 'text-sm!'

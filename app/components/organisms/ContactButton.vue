@@ -62,13 +62,10 @@
 
 <template>
     <NuxtButton size="xl" class="print:hidden w-fit" :class @click="open = !open">{{ t('labels.contact_me') }}</NuxtButton>
-    <NuxtModal v-model:open="open" class="max-w-[50dvw] max-lg:max-w-dvw! max-lg:max-h-dvh! max-lg:w-dvw! max-lg:h-dvh! max-lg:ring-0!">
-        <template #content>
-            <NuxtButton @click="open = false" icon="mingcute:close-line" variant="outline" color="neutral" class="absolute top-4 right-4 w-8 h-8 z-5 max-sm:hidden" :ui="{ leadingIcon: 'size-4! translate-x-px' }"/>
-            <SectionHeader no-contact pattern="topography" class="max-sm:p-4! max-sm:h-fit! max-sm:min-h-24!">
-                {{ t('sections.lets_talk') }}
-            </SectionHeader>
-            <section class="p-4 grid grid-cols-2 max-lg:grid-cols-1 gap-4 border-b max-h-[70dvh] max-lg:max-h-full overflow-y-auto max-lg:auto-rows-min grow h-full">
+    <NuxtModal v-model:open="open" class="max-w-[50dvw] max-lg:max-w-dvw! max-lg:max-h-dvh! max-lg:w-dvw! max-lg:h-dvh! max-lg:ring-0!" :title="t('sections.lets_talk')" :ui="{ title: 'text-lg!' }">
+        <template #body>
+            
+            <section class="grid grid-cols-2 max-lg:grid-cols-1 gap-4 max-h-[70dvh] max-lg:max-h-full overflow-y-auto max-lg:auto-rows-min grow h-full">
                 <NuxtFormField :label="t('form.name.label')" required class="w-full">
                     <NuxtInput :placeholder="t('form.name.placeholder')" class="w-full" v-model="form.name"/>
                 </NuxtFormField>
@@ -88,7 +85,7 @@
                             v-model="phone.code" 
                             :search-input="{ ui: { root: 'hidden' } }"
                             :content="{ align: 'start' }"
-                            :ui="{ base: 'pe-8', content: 'w-48', placeholder: 'hidden', trailingIcon: 'size-4', item: 'flex items-center hover:opacity-75 cursor-nw-resize! *:cursor-nw-resize!', itemTrailingIcon: 'scale-50' }"
+                            :ui="{ base: 'pe-8', content: 'w-48', placeholder: 'hidden', trailingIcon: 'size-4', item: 'flex items-center hover:opacity-75', itemTrailingIcon: 'scale-50' }"
                             trailing-icon="mingcute:selector-vertical-line"
                         >
                             <span class="flex items-center">
@@ -151,10 +148,10 @@
                     </span>
                 </div>
             </section>
-            <section class="p-4 flex items-center justify-between gap-4 shrink">
-                <NuxtButton :loading :disabled="!!errors?.length" @click="submit">{{ t('form.button.submit') }}</NuxtButton>
-                <NuxtButton @click="open = false" variant="outline" color="neutral" class="z-5 sm:hidden">{{ t('form.button.cancel') }}</NuxtButton>
-            </section>
+        </template>
+        <template #footer>
+            <NuxtButton :loading :disabled="!!errors?.length" @click="submit">{{ t('form.button.submit') }}</NuxtButton>
+            <NuxtButton @click="open = false" variant="outline" color="neutral" class="z-5 sm:hidden">{{ t('form.button.cancel') }}</NuxtButton>
         </template>
     </NuxtModal>
     <Teleport to="body">

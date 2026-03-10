@@ -78,7 +78,6 @@
 </script>
 
 <template>
-    <MoleculesSectionHeader pattern="lines-in-motion" class="max-lg:hidden"/>
     <template v-if="data">
         <OrganismsSummarySection :data v-if="data.summary"/>
 

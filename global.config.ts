@@ -4,14 +4,14 @@ export default {
         locales: ['ru', 'en'],
     },
     requests: {
-        telegram: 5072212559,
+        telegram: 5072212559, // change
     },
     captcha: {
-        key: '2eb435c8-d342-4ec2-bfc0-ed74765c8864'
+        key: '2eb435c8-d342-4ec2-bfc0-ed74765c8864' // change
     },
     theme: {
         background: {
-            dark: '#000000',
+            dark: '#1C1917',
             light: '#FFFFFF'
         },
         font: {
@@ -19,48 +19,48 @@ export default {
             light: '#000000'
         },
         border: {
-            dark: '#404040',
-            light: '#c2c2c2'
+            dark: '#44403B',
+            light: '#D6D3D1'
         },
-        accent: '#2b7fff'
+        accent: '#00D492'
     },
     cms: {
-        project: 'd5cxszmz',
+        project: 'd5cxszmz', // change
         api: '2026-02-27',
         dataset: 'production',
     },
     metrics: {
-        yandex: 103237740,
-        gtag: 'GTM-TFT8VB5P',
+        yandex: 103237740, // change
+        gtag: 'GTM-TFT8VB5P', // change
     },
     head: {
-        url: 'https://cv.xlsft.ru',
+        url: 'https://cv.xlsft.ru', // change
         author: 'xlsft',
         address: {
             locality: 'Липецк',
             region: 'Липецкая область',
-            postal: '398005',
+            postal: '398059',
             country: 'Россия',
         }
     },
     schema: {
         person: {
-            fullname: 'Илья Торшин',
-            firstname: 'Илья',
-            lastname: 'Торшин',
-            initials: 'Илья Т.',
-            position: 'Senior Frontend Engineer'
+            fullname: 'Даниил Татаренко',
+            firstname: 'Даниил',
+            lastname: 'Татаренко',
+            initials: 'Даниил Т.',
+            position: 'Middle Backend Developer'
         },
         organization: {
-            name: 'xlsft',
-            legalName: 'ИП Торшин Илья Евгеньевич',
-            legalAddress: '398005, Липецкая область, Г.Липецк, Ул.Суворова, д.3, кв.19',
-            inn: '482308004814',
-            ogrn: '323480000011992',
-            url: 'https://xlsft.ru',
-            email: 'dev@xlsft.ru',
-            logo: 'https://cdn.sanity.io/images/d5cxszmz/production/dd1cb4829f950c4e116d511ccf77af3b5c2ed26a-480x100.svg',
-            phone: '+7 (999) 750-66-23'
+            name: 'Татаренко Даниил',
+            legalName: 'ИП Татаренко Даниил Сергеевич',
+            legalAddress: '398059, Липецк гор., Неделина ул. Д 4, Корп А',
+            inn: '482621861054',
+            ogrn: '325480000060930',
+            url: 'https://xlsft.ru', // change
+            email: 'dev@xlsft.ru', // change
+            logo: 'https://cdn.sanity.io/images/d5cxszmz/production/dd1cb4829f950c4e116d511ccf77af3b5c2ed26a-480x100.svg', // change
+            phone: '+7 (900) 599-01-73'
         }
     }
 }

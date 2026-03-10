@@ -29,7 +29,7 @@ export default defineNuxtConfig({
     fonts: {
         families: [
             { 
-                name: 'Cascadia Mono', 
+                name: 'Nunito', 
                 weights: [200, 300, 400, 500, 600, 700, 800, 900], 
                 global: true, 
                 provider: 'google' 

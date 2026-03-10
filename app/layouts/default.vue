@@ -1,7 +1,8 @@
 <script setup lang="ts">
     import Logo from '~/assets/svg/logo.svg?raw'
     import LogoMini from '~/assets/svg/logo-mini.svg?raw'
-    import { useScroll } from '@vueuse/core';   
+    import { useMouse, useRafFn, useScroll } from '@vueuse/core';  
+    import { useSpring } from '@vueuse/motion'
     import * as locales from '@nuxt/ui/locale'
 
     const { locale, setLocale, locales: i18nLocales, t } = useI18n()
@@ -135,37 +136,64 @@
             telephone: config.schema.organization.phone
         })
     ])
+
+    const mouse = useMouse()
+    const pos = reactive({ x: 0, y: 0 })
+
+    useRafFn(() => {
+        pos.x += (mouse.x.value - pos.x) * 0.15
+        pos.y += (mouse.y.value - pos.y) * 0.15
+    })
+ 
+    
 </script>
 
 <template>
+    <div class="w-dvw h-dvh fixed pointer-events-none *:pointer-events-none -z-3 isolate">
+        <AtomsPattern
+            name="topography"
+            class="w-dvw h-dvh absolute top-0 left-0 opacity-20 max-lg:hidden"
+            :style="{ '--x': `${pos.x}px`, '--y': `${pos.y - scroll.y.value}px` }"
+            style="
+                --pattern-color: var(--ui-primary);
+                mask-image: radial-gradient(
+                    circle 300px at var(--x) var(--y),
+                    black 0%,
+                    black 40%,
+                    transparent 100%
+                );
+            "
+        />
+        
+    </div>
     <NuxtHeader class="transition-colors duration-500" :ui="{ container: 'max-w-dvw', root: `${header >= scroll.y.value && 'border-bg!'} max-lg:border-default!` }">
         <template #left>
-            <NuxtLink to="/" v-html="Logo"/>
+            <NuxtLink to="/" v-html="Logo" class="scale-150 origin-left"/>
         </template>
         <template #toggle>
-            <NuxtColorModeButton variant="subtle" :ui="{ base: '*:cursor-nw-resize! cursor-nw-resize! hover:opacity-75! transition-opacity' }"/>
+            <NuxtColorModeButton variant="subtle" :ui="{ base: 'hover:opacity-75! transition-opacity' }"/>
             <NuxtLocaleSelect
-                class="cursor-nw-resize!"
+                v-if="locales"
                 :model-value="locale"
                 :locales="Object.values(locales).filter((nuxtLocale) => i18nLocales.find((i18nLocale) => i18nLocale.code === nuxtLocale.code))"
                 @update:model-value="setLocale($event as 'ru')"
                 :ui="{
-                    base: '*:cursor-nw-resize! cursor-nw-resize! hover:opacity-75! transition-opacity',
-                    item: '*:cursor-nw-resize! cursor-nw-resize! hover:opacity-75! transition-opacity',
+                    base: 'hover:opacity-75! transition-opacity',
+                    item: 'hover:opacity-75! transition-opacity',
                     itemTrailingIcon: 'scale-50'
                 }"
             />
         </template>
     </NuxtHeader>
-    <NuxtContainer class="flex flex-col min-h-(--ui-viewport-height) py-12 max-lg:p-0!">
-        <div class="min-w-full min-h-full grow border max-lg:border-none relative flex flex-col">
+    <NuxtContainer class="flex flex-col min-h-(--ui-viewport-height) p-8 max-lg:p-4">
+        <div class="min-w-full min-h-full grow relative flex flex-col">
             <div class="w-full" id="container"/>
-            <div class="w-full h-full grow flex flex-col">
+            <div class="w-full h-full grow flex flex-col gap-8">
                 <slot/>
             </div>
         </div>
     </NuxtContainer>
-    <NuxtFooter :ui="{ container: 'lg:items-start!', right: 'lg:h-full! grow!', left: 'items-start! justify-start!s' }">
+    <NuxtFooter :ui="{ container: 'lg:items-start!', right: 'lg:h-full! grow!', left: 'items-start! justify-start!s' }" v-if="data?.footer">
         <template #left>
             <div class="flex flex-col gap-4 *:text-[10px]! *:text-default/50 *:leading-5 max-w-100">
                 <div class="flex flex-col">

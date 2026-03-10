@@ -17,13 +17,7 @@
 </script>
 
 <template>
-    <div class="flex flex-col *:text-sm! *:text-default/50! border! border-default!">
-        <div class="grow! flex! items-center! *:text-xs! justify-between! px-3! py-1! border-b! border-default!">
-            <span>200 OK {{ props.endpoint }}</span>
-            <span>{{ bytes(length, { unitSeparator: ' ' }) }}</span>
-        </div>
-        <div class="grow! p-3! *:m-0!" ref="container">
-            <MDCSlot class=""/>
-        </div>
+    <div class="grow! *:m-0! p-3! text-sm backdrop-blur-lg border-text border rounded-lg" ref="container">
+        <MDCSlot class=""/>
     </div>
 </template>

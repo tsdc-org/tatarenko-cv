@@ -4,10 +4,10 @@
 </script>
 
 <template>
-    <section class="p-8 max-lg:p-4 print:px-0! flex flex-col relative">
+    <section class="print:px-0! flex flex-col relative">
         <div class="flex flex-col gap-8 relative pl-20 pb-6 last:pb-0 max-lg:pl-0!" :key="company.name" v-for="company, i in data.experience">
             <div class="h-full w-px bg-border absolute top-0 left-6 max-lg:hidden" v-if="data.experience.length !== Number(i) + 1"></div>
-            <AtomsPattern name="texture" class="[&_div]:scale-3000 overflow-hidden pointer-events-none w-12 h-12 border absolute! top-0 left-0 bg-default z-2 flex items-center justify-center text-default/50 text-sm! max-lg:hidden">{{ (data.experience.length - Number(i) - 1).toString().padStart(2, '0') }}</AtomsPattern>
+            <div class="rounded-full overflow-hidden hover:border-primary! transition-all select-none w-12 h-12 border absolute! top-0 left-0 bg-default z-2 flex items-center justify-center text-default/50 text-sm! max-lg:hidden">{{ (data.experience.length - Number(i)).toString() }}</div>
 
             <div class="flex flex-col gap-4 grow">
                 <NuxtImg v-if="company.logo" :src="company.logo" class="h-12 max-lg:h-6 w-fit flex items-center text-2xl font-bold" loading="lazy" :alt="company.name"/>

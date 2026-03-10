@@ -31,7 +31,7 @@
 
 <template>
     <div>
-        <div @click="actions.open" class="inline-block cursor-zoom-in! w-full h-full">
+        <div @click="actions.open" class="inline-block w-full h-full">
             <slot />
         </div>
         <Teleport to="body">

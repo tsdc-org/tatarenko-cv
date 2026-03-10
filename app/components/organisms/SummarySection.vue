@@ -6,8 +6,8 @@
 </script>
 
 <template>
-    <section class="p-8 max-lg:p-4 print:p-0! flex max-lg:flex-col-reverse gap-4 relative">
-        <div class="flex gap-2 flex-col absolute max-lg:static right-8 bottom-8 *:text-right max-lg:*:text-left print:hidden">
+    <section class="print:p-0! flex max-lg:flex-col-reverse gap-4 relative">
+        <div class="flex gap-2 flex-col absolute max-lg:static right-0 bottom-0 *:text-right max-lg:*:text-left print:hidden">
             <NuxtLink v-if="data.links.github?.to" :to="data.links.github.to" target="_blank">{{ t('labels.this_project_on_github') }}</NuxtLink>
             <NuxtLink v-if="data.links.hh?.to" :to="data.links.hh.to" target="_blank">{{ t('labels.this_cv_on_hh') }}</NuxtLink>
             <NuxtLink v-if="data.links.linkedin?.to" :to="data.links.linkedin.to" target="_blank">{{ t('labels.this_cv_on_linkedin') }}</NuxtLink>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="flex flex-col items-end max-lg:items-start gap-4">
-            <div class="flex items-center justify-center h-fit w-100 min-lg:min-w-100 max-sm:w-full max-lg:w-70 overflow-hidden duration-700 relative">
+            <div class="flex items-center justify-center h-fit w-100 min-lg:min-w-100 max-sm:w-full max-lg:w-70 overflow-hidden duration-700 relative rounded-lg!">
                 <NuxtBadge class="absolute top-2 right-2" variant="solid">{{ data.summary.status }}</NuxtBadge>
                 <NuxtImg 
                     :src="data.summary.image" 

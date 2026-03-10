@@ -23,8 +23,8 @@
 </script>
 
 <template>
-    <section class="flex flex-col relative" v-if="projects?.length">
-        <div class="w-full flex items-center justify-between border-b p-8 max-lg:p-4" v-if="data.projectTags?.length && !props.noTags">
+    <section class="flex flex-col gap-8 relative" v-if="projects?.length">
+        <div class="w-full flex items-center justify-between" v-if="data.projectTags?.length && !props.noTags">
             <span class="text-default/50 text-sm">{{ t('labels.tags') }}:</span>
             <div class="flex flex-wrap gap-1 justify-center items-center sm:justify-end">
                 <NuxtButton 
@@ -46,7 +46,7 @@
                 </NuxtButton>
             </div>
         </div>
-        <NuxtBlogPosts class="p-8 max-lg:p-4" :ui="{ base: 'gap-4! p-8!' }">
+        <NuxtBlogPosts class="" :ui="{ base: 'gap-4!' }">
             <NuxtBlogPost
                 v-for="project in (projects || []).sort((a: any, b: any) => b.priority - a.priority)"
                 :key="project.name"
@@ -56,7 +56,7 @@
                 :ui="{
                     header: 'border-b group-hover/blog-post:border-primary!', 
                     image: 'grayscale group-hover/blog-post:grayscale-0 group-hover/blog-post:scale-105! transition-all',
-                    root: 'hover:ring-primary! *:cursor-nw-resize! cursor-nw-resize!',
+                    root: 'hover:ring-primary!',
                     body: 'p-3! flex flex-col gap-1',
                     description: 'm-0! flex flex-col gap-4 grow',
                     title: 'text-sm!'
