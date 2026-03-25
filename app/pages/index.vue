@@ -57,10 +57,10 @@
 
     defineOgImage('AtomsOgIndex.takumi', {
         theme: theme.value as 'dark' | 'light',
-        title: data.value?.summary.title,
-        description: data.value?.summary.description,
-        photo: data.value?.summary.image,
-        status: data.value?.summary.status,
+        title: data.value?.summary?.title,
+        description: data.value?.summary?.description,
+        photo: data.value?.summary?.image,
+        status: data.value?.summary?.status,
         experience: `${t('sections.experience')}: ${useExperience(
             data.value?.experience?.at(-1)?.positions?.at(-1)?.duration?.from!, 
             data.value?.experience?.at(0)?.positions?.at(0)?.duration?.to
@@ -70,9 +70,9 @@
 
     useSeoMeta({ 
         title: t('pages.index'),
-        ogTitle: `${data.value?.summary.title} — ${t('pages.index')}`,
-        description: data.value?.summary.description || '',
-        ogDescription: data.value?.summary.description || ''
+        ogTitle: `${data.value?.summary?.title} — ${t('pages.index')}`,
+        description: data.value?.summary?.description || '',
+        ogDescription: data.value?.summary?.description || ''
     })
     
 </script>

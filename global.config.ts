@@ -4,7 +4,7 @@ export default {
         locales: ['ru', 'en'],
     },
     requests: {
-        telegram: 5072212559, // change
+        telegram: 240373182,
     },
     captcha: {
         key: '2eb435c8-d342-4ec2-bfc0-ed74765c8864' // change
@@ -25,12 +25,12 @@ export default {
         accent: '#00D492'
     },
     cms: {
-        project: 'd5cxszmz', // change
+        project: 'oeazzb4g',
         api: '2026-02-27',
         dataset: 'production',
     },
     metrics: {
-        yandex: 103237740, // change
+        yandex: 108240539,
         gtag: 'GTM-TFT8VB5P', // change
     },
     head: {

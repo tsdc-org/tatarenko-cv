@@ -6,7 +6,7 @@
 </script>
 
 <template>
-    <section class="print:p-0! flex max-lg:flex-col-reverse gap-4 relative">
+    <section class="print:p-0! flex max-lg:flex-col-reverse gap-4 relative min-h-[550px]">
         <div class="flex gap-2 flex-col absolute max-lg:static right-0 bottom-0 *:text-right max-lg:*:text-left print:hidden">
             <NuxtLink v-if="data.links.github?.to" :to="data.links.github.to" target="_blank">{{ t('labels.this_project_on_github') }}</NuxtLink>
             <NuxtLink v-if="data.links.hh?.to" :to="data.links.hh.to" target="_blank">{{ t('labels.this_cv_on_hh') }}</NuxtLink>

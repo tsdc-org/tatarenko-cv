@@ -85,31 +85,31 @@
             url: config.head.url,
             sameAs: data.value.person.links,
             worksFor: defineOrganization({
-                name: data.value.person.workplace.name,
-                url: data.value.person.workplace.link,
-                logo: data.value.person.workplace.logo
+                name: data.value.person.workplace?.name,
+                url: data.value.person.workplace?.link,
+                logo: data.value.person.workplace?.logo
             }),
             knowsAbout: data.value.person.skills?.flatMap((skill: any) => ({
                 "@type": 'Thing',
-                name: skill.name
+                name: skill?.name
             })) || [],
             hasOccupation: data.value.person.experience.map((company: any) => company.positions.map((position: any) => ({
                 "@type": 'Occupation',
-                name: position.name,
+                name: position?.name,
                 description: company.about,
                 responsibilities: position.description,
-                skills: position.skills.map((skill: any) => skill.name),
+                skills: position.skills.map((skill: any) => skill?.name),
                 startDate: position.duration.from,
                 endDate: position.duration.to || undefined,
                 organization: defineOrganization({
-                    name: company.name,
+                    name: company?.name,
                     url: company.link || undefined,
                     logo: company.logo || undefined
                 })
             }))),
             "alumniOf": data.value.education?.map((education: any) => ({
                 "@type": "EducationalOrganization",
-                name: education.name,
+                name: education?.name,
                 department: education.faculty,
                 sameAs: education.link || undefined,
             })),
@@ -119,7 +119,7 @@
             itemListElement: data.value.projects.sort((a: any, b: any) => b.priority - a.priority).map((project: any, index: number) => ({
                 "@type": project.repo ? 'SoftwareSourceCode' : 'CreativeWork',
                 position: index + 1,
-                name: project.name,
+                name: project?.name,
                 codeRepository: project.repo ? `https://github.com/${project.repo}` : undefined,
                 url: `${config.head.url}/ru/projects/${project.id}`,
                 thumbnailUrl: project.thumbnail,
@@ -127,7 +127,7 @@
             }))
         }),
         defineOrganization({
-            name: config.schema.organization.name,
+            name: config.schema.organization?.name,
             legalName: config.schema.organization.legalName,
             legalAddress: config.schema.organization.legalAddress,
             url: config.schema.organization.url,

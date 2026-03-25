@@ -55,7 +55,7 @@
                 @click="() => { router.push(`/${locale}/projects/${project.id}`) }"
                 :ui="{
                     header: 'border-b group-hover/blog-post:border-primary!', 
-                    image: 'grayscale group-hover/blog-post:grayscale-0 group-hover/blog-post:scale-105! transition-all',
+                    image: 'sepia group-hover/blog-post:sepia-0 group-hover/blog-post:scale-105! transition-all',
                     root: 'hover:ring-primary!',
                     body: 'p-3! flex flex-col gap-1',
                     description: 'm-0! flex flex-col gap-4 grow',
