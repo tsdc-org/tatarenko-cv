@@ -3,7 +3,7 @@ x-environment: &env
   TG_TOKEN: TG_TOKEN
   HCAPTCHA_TOKEN: HCAPTCHA_TOKEN
 
-name: container_name
+name: tatarenko
 services:
   app:
     build:

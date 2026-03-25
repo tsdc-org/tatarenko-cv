@@ -13,6 +13,7 @@ export default {
     },
     present: 'Present',
     sections: {
+        lets_talk: 'Let`s talk!',
         experience: 'Experience',
         education: 'Education',
         projects: 'Projects',
